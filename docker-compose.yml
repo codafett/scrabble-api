@@ -1,0 +1,25 @@
+version: "3"
+services:
+  license-api:
+    image: license-api
+    container_name: license-api
+    restart: always
+    build: .
+    ports:
+      - "4090:4090"
+    links:
+      - license-db
+    environment:
+      - 'JWT_TOKEN_SECRET=@£QGWEeww4hhWywe%re'
+      - PORT=4090
+      - TEST_PORT=4091
+      - DB=mongodb://license-db:27017/license
+      - LOG_LEVEL=debug
+      - DEFAULT_CLIENT_NAME=FutureProof
+    volumes:
+      - ~//data:/app/data/
+  license-db:
+    container_name: license-db
+    image: mongo
+    ports:
+      - "27017:27017"

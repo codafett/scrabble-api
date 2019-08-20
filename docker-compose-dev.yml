@@ -1,0 +1,16 @@
+version: "3"
+services:
+  license-api:
+    environment:
+      - PORT=4090
+      - TEST_PORT=4091
+      - "JWT_TOKEN_SECRET=@£QGWEeww4hhWywe%re"
+      - DB=mongodb://license-db/appscore
+      - DEFAULT_CLIENT_NAME=FutureProof
+  license-db:
+    volumes:
+      - ~//data:/data/
+networks:
+  default:
+    external:
+      name: license

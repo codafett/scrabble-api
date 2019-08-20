@@ -1,0 +1,16 @@
+/node_modules
+bundle.js
+npm-debug.log
+.DS_Store
+*.log
+*.lic
+
+# IntelliJ
+*.iml
+/.idea
+.env
+lib
+
+.nyc_output/
+coverage/
+.vscode/

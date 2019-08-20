@@ -1,0 +1,22 @@
+{
+  "schema": {
+    "files": "app/schemas/**/*.gql"
+  },
+  "query": {
+    "files": [
+      {
+        "match": "app/**/*.js",
+        "parser": ["EmbeddedQueryParser", { "startTag": "Relay\\.QL`", "endTag": "`" }],
+        "isRelay": true
+      },
+      {
+        "match": "features/**/*.feature",
+        "parser": ["EmbeddedQueryParser", { "startTag": "graphql request\\s+\"\"\"", "endTag": "\"\"\"" }]
+      },
+      {
+        "match": "app/schemas/**/*.gql",
+        "parser": "QueryParser"
+      }
+    ]
+  }
+}

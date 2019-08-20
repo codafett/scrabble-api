@@ -1,0 +1,19 @@
+image: node:10.13.0
+
+before_script:
+  - npm i
+
+stages:
+  - test
+
+run_tests:
+  stage: test
+  script:
+    - npm run test
+
+variables:
+  PORT: "3091"
+  TEST_PORT: "3092"
+  JWT_TOKEN_SECRET: "$t3eg34yEWRG£$%UY"
+  DB: "mongodb://127.0.0.1/license"
+  LOG_LEVEL: "debug"
