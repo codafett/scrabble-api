@@ -4,7 +4,7 @@ import mongooseLeanId from 'mongoose-lean-id';
 import mongooseAggregatePaginate from 'mongoose-aggregate-paginate';
 import { matchWholeWordRegEx } from '../../utils/stringUtils';
 
-import { TEST_USER_EMAIL_ADDRESS } from '../../constants';
+import { TEST_USER_EMAIL_ADDRESS } from './constants';
 
 function BaseSchema(schemaDefinition) {
   const newSchemaDefinition = Object.assign({}, schemaDefinition);

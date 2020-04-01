@@ -1,19 +1,15 @@
 {
+  "root": true,
   "env": {
     "browser": false,
     "es6": true,
     "node": true,
-    "mocha": true,
     "jest": true
   },
   "extends": "airbnb",
   "parser": "babel-eslint",
-  "plugins": [
-    "chai-friendly"
-  ],
   "rules": {
     "no-unused-expressions": 0,
-    "chai-friendly/no-unused-expressions": 2,
     "no-underscore-dangle": [
       "error",
       {

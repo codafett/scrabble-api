@@ -1,4 +1,4 @@
-import { getObjectValue } from '../objectHelper';
+import { getObjectValue } from './objectHelper';
 
 describe('objectHelper', () => {
   it('should return null if obj passed is null', () => {

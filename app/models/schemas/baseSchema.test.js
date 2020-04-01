@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 import httpContext from 'express-http-context';
 
 import { openTestDb, resetDb, closeTestDb } from '../../utils/testUtils';
-import { TEST_USER_EMAIL_ADDRESS } from '../../constants';
+import { TEST_USER_EMAIL_ADDRESS } from './constants';
 
-import BaseSchema from './baseSchema';
+import BaseSchema from './BaseSchema';
 
 describe('baseSchema', () => {
   const TestSchema = new BaseSchema({});
@@ -38,7 +38,7 @@ describe('baseSchema', () => {
       connection = await openTestDb();
     });
     afterAll(async () => {
-      await closeTestDb();
+      await closeTestDb(connection);
     });
     beforeEach(async () => {
       httpContextGetStub = jest.spyOn(httpContext, 'get');

@@ -1,0 +1,13 @@
+export const USER_REQUIRED = 'User is required';
+export const USER_CANT_SAVE_NEW = 'User does not exist';
+export const USER_LOGIN_EMAIL_REQUIRED = 'Email is required';
+export const USER_LOGIN_PASSWORD_REQUIRED = 'Password is required';
+export const USER_EMAIL_ALREADY_REGISTERED = 'User email has already been registered';
+export const USER_PASSWORDS_DO_NOT_MATCH = 'Passwords do not match';
+export const EMAIL_IS_REQUIRED = 'Email address is required';
+export const FIRST_NAME_IS_REQUIRED = 'First name is required';
+export const LAST_NAME_IS_REQUIRED = 'Last name is required';
+export const PASSWORD_IS_REQUIRED = 'Password is required';
+export const PASSWORD_CONFIRMATION_IS_REQUIRED = 'Password confirmation is required';
+export const EMAIL_IS_INVALID = 'Email is not in a valid format';
+export const PASSWORDS_DO_NOT_MATCH = 'Password and Password Confirmation do not match';

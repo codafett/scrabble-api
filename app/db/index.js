@@ -27,7 +27,14 @@ export default function configureDb() {
 
   mongoose.set('debug', matchWholeWord(config.logLevel, 'VERBOSE'));
 
-  const promise = mongoose.connect(uri, { useNewUrlParser: true });
+  const promise = mongoose.connect(
+    uri,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    },
+  );
 
   try {
     promise.then(async () => {

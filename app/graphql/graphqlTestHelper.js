@@ -8,7 +8,7 @@ import {
 import {
   mergedTypes,
 } from './index';
-import { logException } from '../../utils/logger';
+import { logException } from '../utils/logger';
 
 export const DEFAULT_GRAPHQL_MOCK_BOOL_VALUE = false;
 export const DEFAULT_GRAPHQL_MOCK_ID_VALUE = '1';

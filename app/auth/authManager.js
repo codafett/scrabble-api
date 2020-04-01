@@ -7,7 +7,7 @@ import {
   PERMISSION_DENIED,
 } from '../constants';
 
-const AuthManager = {
+const AuthManager = () => ({
   getGroupPermissionIds: function getGroupPermissionIds(group) {
     return group && group.permissions
       ? group.permissions.map(
@@ -49,6 +49,6 @@ const AuthManager = {
     }
     return true;
   },
-};
+});
 
-export default AuthManager;
+export default AuthManager();

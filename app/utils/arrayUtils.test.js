@@ -3,8 +3,8 @@ import {
   sortByObjectValue,
   getUniqueValues,
   getFirst,
-} from '../arrayUtils';
-import { matchWholeWord } from '../stringUtils';
+} from './arrayUtils';
+import { matchWholeWord } from './stringUtils';
 
 describe('getDuplicateCount', () => {
   it('should return an array of duplicates with their count', () => {

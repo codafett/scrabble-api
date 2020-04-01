@@ -3,8 +3,8 @@ module.exports = {
   testURL: 'http://localhost',
   collectCoverageFrom: [
     'app/**/*.{js,jsx}',
-    '!app/models/graphql/graphqlTestHelper.js',
-    '!app/models/graphql/index.js',
+    '!app/graphql/graphqlTestHelper.js',
+    '!app/graphql/index.js',
     '!app/config/database.js',
     '!app/apolloServer.js',
     '!app/utils/testUtils.js',

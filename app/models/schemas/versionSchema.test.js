@@ -14,7 +14,7 @@ describe('SystemSchema', () => {
     connection = await openTestDb();
   });
   afterAll(async () => {
-    await closeTestDb();
+    await closeTestDb(connection);
   });
   afterEach(async () => {
     await resetDb(connection);

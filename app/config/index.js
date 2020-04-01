@@ -12,7 +12,7 @@ module.exports = {
   port: process.env.PORT || '3094',
   testPort: process.env.TEST_PORT || '3095',
   db: process.env.DB,
-  logLevel: process.env.LOG_LEVEL,
+  logLevel: process.env.LOG_LEVEL || 'info',
   engineApiToken: process.env.ENGINE_API_TOKEN,
   engineProcessTimeout: process.env.ENGINE_PROCESS_TIMEOUT_MINUTES,
   graphiql: process.env.GRAPHIQL,

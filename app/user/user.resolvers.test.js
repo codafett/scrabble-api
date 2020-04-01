@@ -1,4 +1,4 @@
-import * as userService from '../../../services/user/userService';
+import userService from './userService';
 
 import userResolvers from './user.resolvers';
 

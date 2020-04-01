@@ -7,9 +7,9 @@ import {
 import {
   PERMISSION_DENIED,
   UNAUTHORISED_ACCESS_ERROR_MESSAGE,
-} from '../../../constants';
-import AuthManager from '../../../auth/authManager';
-import permissions from '../../../auth/permissions';
+} from './constants';
+import AuthManager from './authManager';
+import permissions from './permissions';
 
 describe('authRequests', () => {
   let resolverFunction;

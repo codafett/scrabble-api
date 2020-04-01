@@ -1,4 +1,4 @@
-import AuthManager from '../../../auth/authManager';
+import AuthManager from './authManager';
 
 export const authorisedRequest = (permissionRequired, resolverFunction) => async (
   obj,

@@ -2,7 +2,6 @@
 /* Created by reube on 13/07/2017.
 */
 // Main starting point of the application
-import 'babel-polyfill';
 import express from 'express';
 import httpContext from 'express-http-context';
 import bodyParser from 'body-parser';
@@ -20,7 +19,7 @@ import config from './config';
 import {
   mergedTypes,
   mergedResolvers,
-} from './models/graphql';
+} from './graphql';
 
 import configureDb from './db';
 

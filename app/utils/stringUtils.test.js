@@ -8,7 +8,7 @@ import {
   matchEndOfWordRegEx,
   matchEndOfWord,
   getSearchRegEx,
-} from '../stringUtils';
+} from './stringUtils';
 
 describe('stringUtils', () => {
   describe('matchWholeWordRegEx', () => {
