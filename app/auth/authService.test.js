@@ -28,7 +28,7 @@ describe('authServices', () => {
     });
     it('should return Incorrect Password when password match fails', async () => {
       const expectedResult = {
-        comparePassword: () => false,
+        passwordHash: '',
       };
       userFindStub.mockResolvedValue(expectedResult);
       const result = await authService.authenticate('w@w.com', '1234');

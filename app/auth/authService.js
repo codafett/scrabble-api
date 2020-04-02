@@ -12,6 +12,7 @@ import {
   INCORRECT_EMAIL_ADDRESS,
   INCORRECT_PASSWORD,
 } from './constants';
+import encryptionHelper from '../utils/encryptionHelper';
 
 const AuthService = () => ({
   tokenForUser: function tokenForUser(user) {
@@ -53,7 +54,10 @@ const AuthService = () => ({
     logger.debug(`Checking password for ${email}`);
 
     // compare password - is 'password' equal to user.password?
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await encryptionHelper.compare(
+      password,
+      user.passwordHash,
+    );
     if (!isMatch) {
       logger.debug(`Password incorrect for ${email}`);
       result.status = 422;
