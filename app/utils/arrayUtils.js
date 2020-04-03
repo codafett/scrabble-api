@@ -8,10 +8,10 @@ export function getDuplicateCount(array, fieldCb) {
       const value = fieldCb(item);
       if (typeof value === 'string' || value instanceof String) {
         [unmatchedRecord] = unmatchedValues
-          .filter(u => u.name.match(matchWholeWordRegEx(value)));
+          .filter((u) => u.name.match(matchWholeWordRegEx(value)));
       } else {
         [unmatchedRecord] = unmatchedValues
-          .filter(u => u.name === value);
+          .filter((u) => u.name === value);
       }
       if (unmatchedRecord) {
         unmatchedRecord.count += 1;
@@ -60,4 +60,16 @@ export function getFirst(array, matchCb) {
     });
   }
   return result;
+}
+
+export function shuffle(array) {
+  return array.reduce(
+    (newArr, _, i) => {
+      const rand = i + (Math.floor(Math.random() * (newArr.length - i)));
+      // eslint-disable-next-line no-param-reassign
+      [newArr[rand], newArr[i]] = [newArr[i], newArr[rand]];
+      return newArr;
+    },
+    [...array],
+  );
 }

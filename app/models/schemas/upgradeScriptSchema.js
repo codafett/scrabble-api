@@ -1,6 +1,6 @@
 import privatePaths from 'mongoose-private-paths';
 
-import BaseSchema from './baseSchema';
+import BaseSchema from './BaseSchema';
 
 // Define our model
 const upgradeScriptSchema = BaseSchema({

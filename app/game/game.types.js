@@ -7,18 +7,24 @@ export default gql`
 
   type Game {
     _id: ID
-    name: String
-    users: [User]
+    playerIds: [ID]
+    players: [User]
+    tiles: [Tile]
+  }
+
+  type Tile {
+    _id: ID
+    letter: String
+    value: Int
+    sortOrder: Int
+    playerId: ID
+    played: Boolean
   }
 
   type Mutation {
     start(
-      name: String
       userIds: [ID]
-    ): StartResponse
+    ): Game
   }
 
-  type StartResponse {
-    _id: ID
-  }
 `;
