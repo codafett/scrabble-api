@@ -139,6 +139,16 @@ const UserService = () => ({
     }
     throw new AppError(result.message);
   },
+
+  getUsers: async function users(
+    userId,
+  ) {
+    return User.find({
+      _id: {
+        $ne: userId,
+      },
+    });
+  },
 });
 
 export default UserService();

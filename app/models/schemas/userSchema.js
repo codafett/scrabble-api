@@ -1,6 +1,9 @@
+import mongoose from 'mongoose';
 import privatePaths from 'mongoose-private-paths';
 
 import BaseSchema from './BaseSchema';
+
+const { Schema } = mongoose;
 
 // Define our model
 const userSchema = BaseSchema({
@@ -24,6 +27,10 @@ const userSchema = BaseSchema({
     type: String,
     private: true,
     required: true,
+  },
+  friends: {
+    type: [Schema.Types.ObjectId],
+    ref: 'user',
   },
 });
 

@@ -23,7 +23,6 @@ const TileSchema = BaseSchema({
   },
   played: {
     type: Boolean,
-    required: true,
     default: false,
   },
 });

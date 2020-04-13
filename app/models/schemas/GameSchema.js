@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import BaseSchema from './BaseSchema';
 
 import TileSchema from './TileSchema';
+import PlayerSchema from './PlayerSchema';
+import GameStatusCodes from '../../enums/GameStatusCodes';
 
 const { Schema } = mongoose;
 
@@ -13,15 +15,20 @@ const GameSchema = BaseSchema({
     ref: 'user',
     required: true,
   },
-  playerIds: {
-    type: [Schema.Types.ObjectId],
-    ref: 'user',
-    required: true,
+  players: {
+    type: [PlayerSchema],
     default: [],
   },
   tiles: {
     type: [TileSchema],
     default: [],
+  },
+  status: {
+    type: Number,
+    enum: Object.values(GameStatusCodes),
+  },
+  currentPlayer: {
+    type: Schema.Types.ObjectId,
   },
 });
 
