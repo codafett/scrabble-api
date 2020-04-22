@@ -43,7 +43,7 @@ export async function runVersionScripts(newVersion) {
       await previous;
       logger.debug(`Processing script ${s.name}`);
       const [alreadyRun] = dbVersion.scriptsRun.filter(
-        dbScript => matchWholeWord(s.name, dbScript.name),
+        (dbScript) => matchWholeWord(s.name, dbScript.name),
       );
       if (!alreadyRun) {
         logger.debug(`Running script ${s.name}...`);

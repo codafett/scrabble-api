@@ -13,7 +13,7 @@ describe('db', () => {
   describe('executeReleaseScripts', () => {
     it('should run the correct number of scripts', async () => {
       await executeReleaseScripts();
-      expect(runVersionScriptsStub.mock.calls.length).toEqual(0);
+      expect(runVersionScriptsStub.mock.calls.length).toEqual(1);
     });
   });
 });

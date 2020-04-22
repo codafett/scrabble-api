@@ -1,25 +1,26 @@
-version: "3"
+version: "3.7"
 services:
-  license-api:
-    image: license-api
-    container_name: license-api
+  scrabble-api:
+    image: scrabble-api
+    container_name: scrabble-api
     restart: always
     build: .
     ports:
       - "4090:4090"
-    links:
-      - license-db
     environment:
-      - 'JWT_TOKEN_SECRET=@£QGWEeww4hhWywe%re'
+      - 'JWT_TOKEN_SECRET=@£%2tq4Q£43qy'
       - PORT=4090
       - TEST_PORT=4091
-      - DB=mongodb://license-db:27017/license
+      - DB=mongodb://scrabble-db:27017/scrabble
       - LOG_LEVEL=debug
-      - DEFAULT_CLIENT_NAME=FutureProof
     volumes:
       - ~//data:/app/data/
-  license-db:
-    container_name: license-db
+  scrabble-db:
+    container_name: scrabble-db
     image: mongo
     ports:
       - "27017:27017"
+networks:
+  default:
+    external:
+      name: scrabble

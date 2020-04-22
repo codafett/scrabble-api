@@ -26,8 +26,6 @@ WORKDIR /app
 COPY --from=build-stage /app/lib/ /app/lib/
 COPY --from=build-stage /app/package.json /app/
 COPY --from=build-stage /app/package-lock.json /app/
-COPY --from=build-stage /app/public_key.pem /app/
-COPY --from=build-stage /app/private_key.pem /app/
 COPY --from=build-stage /app/.babelrc /app/
 
 RUN npm i --production

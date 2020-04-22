@@ -1,16 +1,15 @@
-version: "3"
+version: "3.7"
 services:
-  license-api:
+  scrabble-api:
     environment:
       - PORT=4090
       - TEST_PORT=4091
-      - "JWT_TOKEN_SECRET=@£QGWEeww4hhWywe%re"
-      - DB=mongodb://license-db/appscore
-      - DEFAULT_CLIENT_NAME=FutureProof
-  license-db:
+      - "JWT_TOKEN_SECRET=@£tg23t@y@!@£^YQ"
+      - DB=mongodb://scrabble-db/scrabble
+  scrabble-db:
     volumes:
       - ~//data:/data/
 networks:
   default:
     external:
-      name: license
+      name: scrabble

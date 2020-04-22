@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import mongoose from 'mongoose';
 import bluebird from 'bluebird';
 
@@ -9,14 +10,17 @@ import { matchWholeWord } from '../utils/stringUtils';
 
 // Import when required
 // import { runVersionScripts } from './versioning';
+import v1_0_0 from './versioning/v1.0.0/index';
+import { runVersionScripts } from './versioning';
 
 export const RESET_DB_REQUIRED = 'There are collections in the database but no version history, you should delete the existing database before restarting the application';
 
 export async function executeReleaseScripts() {
-  logger.debug('Running executeReleaseScripts...');
+  logger.info('Running executeReleaseScripts...');
   // Run scripts in version order
   // E.G. runVersionScripts(version100);
-  logger.debug('ExecuteReleaseScripts completed!');
+  runVersionScripts(v1_0_0);
+  logger.info('ExecuteReleaseScripts completed!');
 }
 
 export default function configureDb() {

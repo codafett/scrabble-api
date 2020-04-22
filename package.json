@@ -10,10 +10,10 @@
   },
   "main": "server.js",
   "scripts": {
-    "compile": "babel --presets env,stage-0 -d lib/ app/",
+    "compile": "babel --presets=@babel/env -d lib/ app/",
     "prepublish": "npm run compile",
     "start": "babel-node app/server.js",
-    "start:prod": "babel-node lib/server.js NODE_ENV=production LOG_LEVEL=info",
+    "start:prod": "node lib/server.js NODE_ENV=production LOG_LEVEL=debug",
     "test": "cross-env NODE_ENV=test LOG_LEVEL=DEBUG jest --coverage",
     "test:logging": "cross-env LOG_LEVEL=DEBUG jest --coverage",
     "test:no-coverage": "cross-env NODE_ENV=test LOG_LEVEL=DEBUG jest",
@@ -25,8 +25,10 @@
     "lint:js": "npm run lint:eslint -- . --ext .gql --ext .graphql",
     "lint:staged": "lint-staged",
     "coverage": "cross-env NODE_ENV=test nyc mocha",
-    "docker:build": "docker-compose -f docker-compose.yml build",
-    "docker:up": "docker-compose -f docker-compose.yml -f docker-compose-dev.yml up"
+    "docker:build": "docker-compose -f docker-compose.prod.yml build",
+    "docker:dev:build": "docker-compose -f docker-compose.yml build",
+    "docker:up:dev": "docker-compose -f docker-compose.yml -f docker-compose-dev.yml up",
+    "docker:up": "docker-compose -f docker-compose.prod.yml up"
   },
   "author": "Reuben Greaves",
   "dependencies": {
@@ -44,6 +46,7 @@
     "express-graphql": "^0.9.0",
     "express-http-context": "^1.2.3",
     "express-jwt": "^5.3.1",
+    "generate-password": "^1.5.1",
     "graphql": "^14.6.0",
     "jsonwebtoken": "^8.4.0",
     "jwt-simple": "^0.5.5",
@@ -62,16 +65,17 @@
     "passport-local": "^1.0.0",
     "passport-local-token": "^1.0.1",
     "rand-token": "^1.0.1",
+    "shortid": "^2.2.15",
     "winston": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
     "@babel/plugin-transform-async-to-generator": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "@shelf/jest-mongodb": "^1.1.5",
     "babel-eslint": "^10.1.0",
     "babel-plugin-graphql-tag": "^2.5.0",
     "cross-env": "^7.0.2",
@@ -87,7 +91,6 @@
     "jest-watch-typeahead": "^0.4.2",
     "nyc": "^15.0.0",
     "prettier-eslint": "^9.0.1",
-    "shortid": "^2.2.15",
     "sloc": "^0.2.0",
     "superagent": "^5.2.2",
     "supertest": "^4.0.2"
@@ -114,7 +117,10 @@
     "rules": {
       "arrow-parens": [
         "error",
-        "always"
+        "as-needed",
+        {
+          "requireForBlockBody": true
+        }
       ],
       "arrow-body-style": [
         2,
