@@ -28,6 +28,7 @@ export default gql`
   }
 
   type PlayerSummary {
+    _id: ID
     firstName: String
     lastName: String
     email: String
