@@ -27,7 +27,7 @@ const GameSchema = BaseSchema({
     type: Number,
     enum: Object.values(GameStatusCodes),
   },
-  currentPlayer: {
+  currentPlayerId: {
     type: Schema.Types.ObjectId,
   },
 });

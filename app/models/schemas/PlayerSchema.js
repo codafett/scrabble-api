@@ -12,7 +12,7 @@ const PlayerSchema = BaseSchema({
     ref: 'user',
     required: true,
   },
-  sortOrder: {
+  playOrder: {
     type: Number,
     required: true,
   },

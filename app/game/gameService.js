@@ -3,6 +3,7 @@ import assert from 'assert';
 import { Game, User } from '../models';
 import tileSet from '../models/tileSets';
 import { shuffle } from '../utils/arrayUtils';
+import AppError from '../appError';
 
 const MAX_NUMBER_OF_PLAYER_TILES = 7;
 
@@ -48,14 +49,11 @@ const GameService = () => ({
       [],
     );
 
-    gameTiles = gameTiles.map(
-      (tile, index) => {
-        const sortOrder = index + (Math.floor(Math.random() * (gameTiles.length - index)));
-        return {
-          ...tile,
-          sortOrder,
-        };
-      },
+    gameTiles = shuffle(gameTiles).map(
+      (tile, index) => ({
+        ...tile,
+        sortOrder: index,
+      }),
     );
 
     let players = userIds.map(
@@ -68,22 +66,19 @@ const GameService = () => ({
       userId: ownerId,
     });
 
-    players = players.map(
-      (player, index) => {
-        const sortOrder = index + (Math.floor(Math.random() * (players.length - index)));
-        return {
-          ...player,
-          sortOrder,
-        };
-      },
+    players = shuffle(players).map(
+      (player, index) => ({
+        ...player,
+        playOrder: index,
+      }),
     );
 
     const game = new Game({
       ownerId,
       players,
       tiles: gameTiles,
-      currentPlayer: players[0]._id,
     });
+    game.currentPlayerId = game.players[0]._id;
 
     await game.save();
 
@@ -224,6 +219,12 @@ const GameService = () => ({
       (p) => p.userId.equals(userId),
     );
 
+    if (!game.currentPlayerId.equals(player._id)) {
+      throw new AppError(
+        'Sorry, it\'s not your turn!',
+      );
+    }
+
     player.turns.push(
       {
         tileIds,
@@ -242,6 +243,17 @@ const GameService = () => ({
         }
       },
     );
+
+    let nextPlayerOrder = 0;
+    if (player.playOrder < game.players.length - 1) {
+      nextPlayerOrder = player.playOrder + 1;
+    }
+
+    const nextPlayer = game.players.find(
+      (p) => p.playOrder === nextPlayerOrder,
+    );
+
+    game.currentPlayerId = nextPlayer._id;
 
     await game.save();
 
