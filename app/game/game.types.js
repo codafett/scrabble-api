@@ -16,6 +16,7 @@ export default gql`
     lastTurn: Turn
     myTiles: [Tile]
     createdAt: Date
+    currentPlayer: PlayerSummary
   }
 
   type Tile {
@@ -32,6 +33,8 @@ export default gql`
     firstName: String
     lastName: String
     email: String
+    playOrder: Int
+    score: Int
   }
 
   type Player {

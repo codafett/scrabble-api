@@ -100,23 +100,33 @@ const GameService = () => ({
     gameId,
     userId,
   ) {
-    const game = await Game.findById(gameId);
-    const players = await User.find({
+    const game = await Game.findById(gameId).lean();
+    const users = await User.find({
       _id: {
         $in: game.players
-          .filter((p) => !p.userId.equals(userId))
           .map((p) => p.userId),
       },
-    });
-    const currentPlayer = game.players.find(
+    }).lean();
+    const requestPlayer = game.players.find(
       (p) => p.userId.equals(userId),
     );
     const myTiles = game.tiles.filter(
       (tile) => (
         tile.playerId
-        && tile.playerId.equals(currentPlayer._id)
+        && tile.playerId.equals(requestPlayer._id)
         && !tile.played
       ),
+    );
+
+    const players = game.players.map(
+      (player) => {
+        const user = users.find((u) => u._id.equals(player.userId));
+        return ({
+          firstName: user.firstName,
+          lastName: user.lastName,
+          ...player,
+        });
+      },
     );
 
     return ({
@@ -126,6 +136,9 @@ const GameService = () => ({
       lastTurn: await this.getPlayerLastTurn(
         gameId,
         userId,
+      ),
+      currentPlayer: players.find(
+        (player) => player._id.equals(game.currentPlayerId),
       ),
     });
   },
@@ -232,6 +245,8 @@ const GameService = () => ({
       },
     );
 
+    player.score += score;
+
     tileIds.forEach(
       (tileId) => {
         const gameTile = game.tiles.find(
@@ -268,6 +283,7 @@ const GameService = () => ({
         gameId,
         userId,
       ),
+      currentPlayerId: game.currentPlayerId,
     };
   },
 });

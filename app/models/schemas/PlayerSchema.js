@@ -16,6 +16,10 @@ const PlayerSchema = BaseSchema({
     type: Number,
     required: true,
   },
+  score: {
+    type: Number,
+    default: 0,
+  },
   turns: {
     type: [TurnSchema],
     default: [],
