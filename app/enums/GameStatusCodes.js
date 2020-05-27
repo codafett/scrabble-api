@@ -1,5 +1,4 @@
 export default Object.freeze({
-  InvitationsSent: 1,
-  InProgress: 2,
-  Finished: 3,
+  IN_PROGRESS: 1,
+  FINISHED: 2,
 });
