@@ -1,2 +1,2 @@
-npm run compile
-npm run start:prod
+worker: npm run compile
+web: npm run start:prod
