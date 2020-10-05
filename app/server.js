@@ -57,10 +57,15 @@ app.use((_req, res, next) => {
 logger.info('Setting up parser 3...');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Set up DB
-if (process.env.NODE_ENV !== 'test') {
-  logger.debug('Configuring db...');
-  configureDb();
+try {
+  logger.info('Setting up db...');
+  // Set up DB
+  if (process.env.NODE_ENV !== 'test') {
+    logger.debug('Configuring db...');
+    configureDb();
+  }
+} catch (ex) {
+  logger.error(ex.message);
 }
 
 // Server setup
