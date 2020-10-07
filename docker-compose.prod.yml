@@ -10,6 +10,7 @@ services:
     environment:
       - 'JWT_TOKEN_SECRET=@£%2tq4Q£43qy'
       - PORT=4090
-      - LOG_LEVEL=info
+      - LOG_LEVEL=debug
+      - DB=mongodb+srv://scrabble-db:Scrabbled8@cluster0-ken7l.mongodb.net/scrabble?retryWrites=true&w=majority
     volumes:
       - ~//data:/app/data/
