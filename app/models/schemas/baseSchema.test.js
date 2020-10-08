@@ -4,7 +4,7 @@ import httpContext from 'express-http-context';
 import { openTestDb, resetDb, closeTestDb } from '../../utils/testUtils';
 import { TEST_USER_EMAIL_ADDRESS } from './constants';
 
-import BaseSchema from './BaseSchema';
+import BaseSchema from './baseSchema';
 
 describe('baseSchema', () => {
   const TestSchema = new BaseSchema({});

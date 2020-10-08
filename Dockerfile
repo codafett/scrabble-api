@@ -1,4 +1,4 @@
-FROM node:alpine AS build-stage
+FROM node:13.12.0-alpine AS build-stage
 
 # Create app directory
 RUN mkdir -p /app
@@ -17,7 +17,7 @@ COPY . /app/
 
 RUN npm run compile
 
-FROM node:alpine AS prod
+FROM node:13.12.0-alpine AS prod
 
 # Create app directory
 # RUN mkdir /app

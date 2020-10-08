@@ -4,7 +4,9 @@ services:
     image: scrabble-api
     container_name: scrabble-api
     restart: always
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "4090:4090"
     environment:
