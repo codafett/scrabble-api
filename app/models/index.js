@@ -4,8 +4,8 @@
 
 import mongoose from 'mongoose';
 
-import userSchema from './schemas/UserSchema';
-import versionSchema from './schemas/VersionSchema';
+import userSchema from './schemas/userSchema';
+import versionSchema from './schemas/versionSchema';
 import gameSchema from './schemas/GameSchema';
 
 export const User = mongoose.model('user', userSchema, 'user');

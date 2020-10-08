@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import privatePaths from 'mongoose-private-paths';
 
-import BaseSchema from './BaseSchema';
+import BaseSchema from './baseSchema';
 
 const { Schema } = mongoose;
 

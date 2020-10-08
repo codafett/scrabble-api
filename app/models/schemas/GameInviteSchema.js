@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import BaseSchema from './BaseSchema';
+import BaseSchema from './baseSchema';
 import InvitationSchema from './InvitationSchema';
 
 const { Schema } = mongoose;
